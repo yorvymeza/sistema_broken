@@ -19,8 +19,8 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-box">
-        <h1 className="login-title">Iniciar Sesión</h1>
-        <p className="login-subtitle">Introduce tus credenciales para acceder al sistema.</p>
+        <h1 className="login-title">Sistema</h1>
+        <p className="login-subtitle">Introduce tus credenciales para acceder al broker</p>
         <form onSubmit={handleSubmit} className="login-form">
           <div className="input-group">
             <label htmlFor="email">Correo Electrónico</label>
