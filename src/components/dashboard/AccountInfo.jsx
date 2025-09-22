@@ -1,13 +1,16 @@
 import React from 'react';
 
-function AccountInfo({ balance }) {
+const AccountInfo = ({ balance }) => {
+  const formattedBalance = `$${balance.toFixed(2)}`;
+  const lastUpdated = '6:46:02 PM';
+
   return (
-    <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h2 className="text-2xl font-semibold mb-4 text-white">Balance de la Cuenta</h2>
-      <p className="text-4xl font-bold text-green-400">${balance}</p>
-      <p className="text-gray-400 mt-2">Última actualización: {new Date().toLocaleTimeString()}</p>
+    <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+      <h2 className="text-xl font-semibold text-gray-400 mb-2">Balance de la Cuenta</h2>
+      <p className="text-5xl font-bold text-green-500 mb-1">{formattedBalance}</p>
+      <p className="text-sm text-gray-500">Última actualización: {lastUpdated}</p>
     </div>
   );
-}
+};
 
 export default AccountInfo;

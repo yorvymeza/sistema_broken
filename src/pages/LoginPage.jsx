@@ -1,54 +1,56 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Importa el hook de navegación
+import './LoginPage.css';
 
-function LoginPage() {
+const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Inicializa el hook
 
-  const handleLogin = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí iría la llamada a la API de Exnova para la autenticación
-    console.log('Intentando iniciar sesión con:', email, password);
-    // Navegar al dashboard en caso de éxito
-    navigate('/dashboard');
+    // Aquí iría tu lógica de autenticación real
+    console.log('Datos del formulario:', { email, password });
+    
+    // Suponemos que la autenticación fue exitosa y navegamos al dashboard
+    navigate('/dashboard'); 
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-900">
-      <div className="bg-gray-800 p-8 rounded-lg shadow-lg w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-6 text-center text-white">Iniciar Sesión</h2>
-        <form onSubmit={handleLogin}>
-          <div className="mb-4">
-            <label className="block text-gray-400 text-sm mb-2">Correo Electrónico</label>
+    <div className="login-container">
+      <div className="login-box">
+        <h1 className="login-title">Iniciar Sesión</h1>
+        <p className="login-subtitle">Introduce tus credenciales para acceder al sistema.</p>
+        <form onSubmit={handleSubmit} className="login-form">
+          <div className="input-group">
+            <label htmlFor="email">Correo Electrónico</label>
             <input
               type="email"
-              className="w-full p-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              placeholder="nombre@ejemplo.com"
               required
             />
           </div>
-          <div className="mb-6">
-            <label className="block text-gray-400 text-sm mb-2">Contraseña</label>
+          <div className="input-group">
+            <label htmlFor="password">Contraseña</label>
             <input
               type="password"
-              className="w-full p-2 rounded bg-gray-700 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Ingresa tu contraseña"
               required
             />
           </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded transition duration-200"
-          >
+          <button type="submit" className="login-button">
             Entrar
           </button>
         </form>
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
